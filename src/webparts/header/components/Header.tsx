@@ -59,8 +59,7 @@ export default class Header extends React.Component<IHeaderProps, {}> {
 
   private renderListData() {
     return (
-      <div>
-        <ul>
+      <div className={styles.mainHeader}>
           {this.state.hasErrors
             ?
             this.renderError()
@@ -69,7 +68,6 @@ export default class Header extends React.Component<IHeaderProps, {}> {
               return <HeaderItem item={item} key={key}></HeaderItem>;
             })
           }
-        </ul>
       </div>
 
     );
