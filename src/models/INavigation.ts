@@ -4,6 +4,11 @@ export interface INavigation {
 
 export interface ICategory {
   name: string;
+  IsubCategories: ISubCategory[];
+}
+
+export interface ISubCategory {
+  subCatName: string;
   menuItems:IMenuItem[];
 }
 

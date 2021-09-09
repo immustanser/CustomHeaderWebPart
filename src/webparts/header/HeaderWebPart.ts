@@ -58,9 +58,6 @@ export default class HeaderWebPart extends BaseClientSideWebPart<IHeaderWebPartP
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                }),
                 PropertyPaneTextField('listName', {
                   label: strings.ListNameFieldLabel
                 })

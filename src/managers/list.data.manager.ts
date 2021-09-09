@@ -1,4 +1,4 @@
-import { ICategory, IMenuItem, INavigation } from "../models/INavigation";
+import { ICategory, IMenuItem, INavigation, ISubCategory } from "../models/INavigation";
 import { IHeaderProps } from "../webparts/header/components/IHeaderProps";
 import { sp } from "@pnp/sp";    
 import "@pnp/sp/webs";    
@@ -19,14 +19,18 @@ export default class ListDataManager{
         // console.log("Items: ", items);
         items.map((item:any)=>{
            let menuItem: IMenuItem = { title : item.Title, url : item.ThemeName.Url  };
+           let navSubCategories :ISubCategory = {subCatName : item.SubCategory, menuItems:[menuItem]}
            var navCat = navCategories.filter(p=>p.name == item.Categories );
+           
             if(navCat && navCat.length > 0)
             {
-                navCat[0].menuItems.push(menuItem);
+                navCat[0].IsubCategories.push(navSubCategories);
             }
             else{
-                var cat: ICategory = { name : item.Categories, menuItems:[]};
-                cat.menuItems.push(menuItem);
+                var navSubCat:ISubCategory = {subCatName : item.SubCategory, menuItems:[]}
+                navSubCat.menuItems.push(menuItem);
+                var cat: ICategory = { name : item.Categories, IsubCategories:[]};
+                cat.IsubCategories.push(navSubCategories);
                 navCategories.push(cat);
             }
 
